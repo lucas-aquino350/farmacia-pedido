@@ -1,1 +1,3 @@
-
+server:
+ servlet:
+    context-path: /farmacia-pedido/api
