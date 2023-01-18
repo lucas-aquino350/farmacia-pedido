@@ -13,9 +13,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RequiredArgsConstructor
 public class ClienteController implements ClienteApi {
-
 	private final ClienteService clienteService;
-
 	@Override
 	public ClienteResponse postCliente(@Valid ClienteRequest clienteRequest) {
 		log.info("[start] ClienteController - postCliente");
@@ -26,7 +24,8 @@ public class ClienteController implements ClienteApi {
 	@Override
 	public List<ClienteListResponse> getTodosClientes() {
 		log.info("[start] ClienteController - getTodosClientes");
+		List<ClienteListResponse> clientes = clienteService.buscaTodosClientes();
 		log.info("[finish] ClienteController - getTodosClientes");
-		return null;
+		return clientes;
 	}
 }
