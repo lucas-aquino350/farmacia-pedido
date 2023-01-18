@@ -1,5 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.cliente.application.api;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -21,5 +23,10 @@ public class ClienteController implements ClienteApi {
 		log.info("[finish] ClienteController - postCliente");
 		return clienteCriado;
 	}
-
+	@Override
+	public List<ClienteListResponse> getTodosClientes() {
+		log.info("[start] ClienteController - getTodosClientes");
+		log.info("[finish] ClienteController - getTodosClientes");
+		return null;
+	}
 }
