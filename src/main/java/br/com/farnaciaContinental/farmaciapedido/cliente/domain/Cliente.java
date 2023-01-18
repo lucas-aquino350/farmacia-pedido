@@ -1,7 +1,9 @@
 package br.com.farnaciaContinental.farmaciapedido.cliente.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.br.CPF;
+
+import br.com.farnaciaContinental.farmaciapedido.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,20 +38,18 @@ public class Cliente {
 	@NotBlank
 	private String celular;
 	@NotNull
-	private LocalDateTime dataDeNascimento;
+	private LocalDate dataDeNascimento;
 	private Sexo sexo;
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
-	public Cliente(@NotBlank String nomeCompleto, @NotBlank @CPF String cpf, @Email @NotBlank String email,
-			@NotBlank String celular, @NotNull LocalDateTime dataDeNascimento, Sexo sexo,
-			LocalDateTime dataHoraDoCadastro) {
-		this.nomeCompleto = nomeCompleto;
-		this.cpf = cpf;
-		this.email = email;
-		this.celular = celular;
-		this.dataDeNascimento = dataDeNascimento;
-		this.sexo = sexo;
+	public Cliente( ClienteRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.cpf = clienteRequest.getCpf();
+		this.email = clienteRequest.getEmail();
+		this.celular = clienteRequest.getCelular();
+		this.dataDeNascimento = clienteRequest.getDataDeNascimento();
+		this.sexo = clienteRequest.getSexo();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 }
