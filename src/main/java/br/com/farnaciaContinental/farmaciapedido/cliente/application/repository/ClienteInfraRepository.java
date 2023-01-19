@@ -1,6 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.cliente.application.repository;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +30,13 @@ public class ClienteInfraRepository implements ClienteRepository {
 		List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
 		log.info("[finish] ClienteInfraRepository - buscaTodosClientes");
 		return todosClientes;
+	}
+
+	@Override
+	public Cliente buscaClienteAtravesId(UUID idCliente) {
+		log.info("[start] ClienteInfraRepository - buscaClienteAtravesId");
+		log.info("[finish] ClienteInfraRepository - buscaClienteAtravesId");
+		return null;
 	}
 
 }
