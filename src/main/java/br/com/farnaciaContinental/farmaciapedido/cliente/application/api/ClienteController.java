@@ -1,6 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.cliente.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -27,5 +28,12 @@ public class ClienteController implements ClienteApi {
 		List<ClienteListResponse> clientes = clienteService.buscaTodosClientes();
 		log.info("[finish] ClienteController - getTodosClientes");
 		return clientes;
+	}
+	@Override
+	public ClienteDetalhadoResponse getClienteAtravesId(UUID idCliente) {
+		log.info("[start] ClienteController - getClienteAtravesId");
+		log.info("[idCliente] {}", idCliente);
+		log.info("[finish] ClienteController - getClienteAtravesId");
+		return null;
 	}
 }
