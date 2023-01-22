@@ -19,9 +19,9 @@ public class RestResponseEntityExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorApiResponse> handlerGenericException (APIException ex){
 		log.error("Exception: ", ex);
-		return ResponseEntity.status(HttpStatus.NOT_FOUND)
-				.body(ErrorApiResponse.builder().description("contate o adm")
-						.message("POR FAVOR INFORME AO ADMINISTRADOR DO SISTEMA").build());
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(ErrorApiResponse.builder()
+						.message("CONTATE O ADM!").build());
 	}
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
