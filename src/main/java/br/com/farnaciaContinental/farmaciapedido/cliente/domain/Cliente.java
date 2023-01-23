@@ -30,9 +30,11 @@ public class Cliente {
 	@NotBlank
 	private String nomeCompleto;
 	@NotBlank
+	@Column(unique = true)
 	@CPF
 	private String cpf;
 	@Email
+	@Column(unique = true)
 	@NotBlank
 	private String email;
 	@NotBlank
