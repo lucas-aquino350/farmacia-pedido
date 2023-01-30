@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.farnaciaContinental.farmaciapedido.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -53,5 +54,13 @@ public class Cliente {
 		this.dataDeNascimento = clienteRequest.getDataDeNascimento();
 		this.sexo = clienteRequest.getSexo();
 		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
+
+	public void altera(ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		this.nomeCompleto = clienteAlteracaoRequest.getNomeCompleto();
+		this.celular = clienteAlteracaoRequest.getCelular();
+		this.dataDeNascimento = clienteAlteracaoRequest.getDataDeNascimento();
+		this.sexo = clienteAlteracaoRequest.getSexo();
+		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
 	}
 }

@@ -1,4 +1,4 @@
-package br.com.farnaciaContinental.farmaciapedido.cliente.application.repository;
+package br.com.farnaciaContinental.farmaciapedido.cliente.application.infra;
 
 import java.util.List;
 import java.util.UUID;
@@ -7,16 +7,17 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import br.com.farnaciaContinental.farmaciapedido.cliente.application.api.ClienteAlteracaoRequest;
+import br.com.farnaciaContinental.farmaciapedido.cliente.application.repository.ClienteRepository;
 import br.com.farnaciaContinental.farmaciapedido.cliente.domain.Cliente;
 import br.com.farnaciaContinental.farmaciapedido.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+
 @Repository
 @Log4j2
 @RequiredArgsConstructor
 public class ClienteInfraRepository implements ClienteRepository {
-	
-
 	private final ClienteSpringDataJPARepository clienteSpringDataJPARepository;
 
 	@Override
@@ -53,5 +54,11 @@ public class ClienteInfraRepository implements ClienteRepository {
 		log.info("[start] ClienteInfraRepository - deletaClienteAtravesId");
 		clienteSpringDataJPARepository.delete(cliente);
 		log.info("[start] ClienteInfraRepository - deletaClienteAtravesId");
+	}
+
+	@Override
+	public void patchAlteraCliente(ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		log.info("[start] ClienteInfraRepository - patchAlteraCliente");
+		log.info("[start] ClienteInfraRepository - patchAlteraCliente");
 	}
 }

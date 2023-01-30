@@ -15,6 +15,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class ClienteController implements ClienteApi {
 	private final ClienteService clienteService;
+	
 	@Override
 	public ClienteResponse postCliente(@Valid ClienteRequest clienteRequest) {
 		log.info("[start] ClienteController - postCliente");
@@ -22,6 +23,7 @@ public class ClienteController implements ClienteApi {
 		log.info("[finish] ClienteController - postCliente");
 		return clienteCriado;
 	}
+	
 	@Override
 	public List<ClienteListResponse> getTodosClientes() {
 		log.info("[start] ClienteController - getTodosClientes");
@@ -29,6 +31,7 @@ public class ClienteController implements ClienteApi {
 		log.info("[finish] ClienteController - getTodosClientes");
 		return clientes;
 	}
+	
 	@Override
 	public ClienteDetalhadoResponse getClienteAtravesId(UUID idCliente) {
 		log.info("[start] ClienteController - getClienteAtravesId");
@@ -37,6 +40,7 @@ public class ClienteController implements ClienteApi {
 		log.info("[finish] ClienteController - getClienteAtravesId");
 		return clienteDetalhado;
 	}
+	
 	@Override
 	public void deletaClienteAtravesId(UUID idCliente) {
 		log.info("[start] ClienteController - deletaClienteAtravesId");
@@ -49,6 +53,7 @@ public class ClienteController implements ClienteApi {
 	public void patchAlteraCliente(UUID idCliente, @Valid ClienteAlteracaoRequest clienteAlteracaoRequest) {
 		log.info("[start] ClienteController - patchAlteraCliente");
 		log.info("[idCliente] {}", idCliente);
+		clienteService.patchAlteraCliente(idCliente, clienteAlteracaoRequest);	
 		log.info("[start] ClienteController - patchAlteraCliente");
 	}
 }

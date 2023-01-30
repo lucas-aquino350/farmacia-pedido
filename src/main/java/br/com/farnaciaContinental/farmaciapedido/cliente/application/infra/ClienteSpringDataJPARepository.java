@@ -1,4 +1,4 @@
-package br.com.farnaciaContinental.farmaciapedido.cliente.application.repository;
+package br.com.farnaciaContinental.farmaciapedido.cliente.application.infra;
 
 import java.util.UUID;
 
