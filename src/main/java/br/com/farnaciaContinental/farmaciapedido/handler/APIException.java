@@ -5,17 +5,16 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
-@Getter 	
+@Getter
 @Log4j2
 public class APIException extends RuntimeException {
 	private HttpStatus statusException;
 	private ErrorApiResponse bodyException;
 	
-	private APIException(HttpStatus statusException, String message, Exception e ) {
+	private APIException(HttpStatus statusException, String message, Exception e) {
 		super(message, e);
 		this.statusException = statusException;
 		this.bodyException = ErrorApiResponse.builder()
@@ -32,14 +31,19 @@ public class APIException extends RuntimeException {
 		log.error("Exception: ", e);
 		return new APIException(statusException, message, e);
 	}
+
 	private String getDescription(Exception e) {
-		return (String) Optional.ofNullable(e).map(APIException::getMessageCause).orElse(null);
-				
+		return Optional.ofNullable(e)
+				.map(APIException::getMessageCause).orElse(null);
 	}
-	private static String getMessageCause(Exception e ) {
+
+	private static String getMessageCause(Exception e) {
 		return e.getCause() != null ? e.getCause().getMessage() : e.getMessage();
 	}
-	public ResponseEntity<ErrorApiResponse> buidErrorResponseEntity(){
+	
+	
+
+	public ResponseEntity<ErrorApiResponse> buildErrorResponseEntity() {
 		return ResponseEntity
 				.status(statusException)
 				.body(bodyException);
