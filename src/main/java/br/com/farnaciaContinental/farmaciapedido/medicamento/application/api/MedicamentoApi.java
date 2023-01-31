@@ -15,5 +15,5 @@ public interface MedicamentoApi {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	MedicamentoResponse postMedicamento(@Valid @RequestBody MedicamentoRequest MedicamentoRequest);
+	MedicamentoResponse postMedicamento(@Valid @RequestBody MedicamentoRequest medicamentoRequest);
 }

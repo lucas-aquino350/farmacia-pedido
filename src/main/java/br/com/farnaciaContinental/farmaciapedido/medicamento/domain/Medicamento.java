@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,24 +29,21 @@ public class Medicamento {
 	private String principioAtivo;
 	@NotBlank
     private String laboratorio;
-	@NotBlank
 	private Grupo grupo;
 	@NotBlank
 	private String lote;
 	@NotNull
 	private LocalDate dataDeValidade;
 	@NotNull
-	private LocalDate dataDeFabricação;
+	private LocalDate dataDeFabricacao;
 	
-	public Medicamento(String nomeComercial, @NotBlank String principioAtivo, @NotBlank String laboratorio,
-			@NotBlank Grupo grupo, @NotBlank String lote, @NotNull LocalDate dataDeValidade,
-			@NotNull LocalDate dataDeFabricação) {
-		this.nomeComercial = nomeComercial;
-		this.principioAtivo = principioAtivo;
-		this.laboratorio = laboratorio;
-		this.grupo = grupo;
-		this.lote = lote;
-		this.dataDeValidade = dataDeValidade;
-		this.dataDeFabricação = dataDeFabricação;
+	public Medicamento(MedicamentoRequest medicamentoRequest) {
+		this.nomeComercial = medicamentoRequest.getNomeComercial();
+		this.principioAtivo = medicamentoRequest.getPrincipioAtivo();
+		this.laboratorio = medicamentoRequest.getLaboratorio();
+		this.grupo = medicamentoRequest.getGrupo();
+		this.lote = medicamentoRequest.getLote();
+		this.dataDeValidade = medicamentoRequest.getDataDeValidade();
+		this.dataDeFabricacao = medicamentoRequest.getDataDeFabricacao();
 	}
 }
