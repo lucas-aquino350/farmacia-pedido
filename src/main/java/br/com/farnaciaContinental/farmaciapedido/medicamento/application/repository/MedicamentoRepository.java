@@ -3,7 +3,5 @@ package br.com.farnaciaContinental.farmaciapedido.medicamento.application.reposi
 import br.com.farnaciaContinental.farmaciapedido.medicamento.domain.Medicamento;
 
 public interface MedicamentoRepository {
-
 	Medicamento salva(Medicamento medicamento);
-
 }
