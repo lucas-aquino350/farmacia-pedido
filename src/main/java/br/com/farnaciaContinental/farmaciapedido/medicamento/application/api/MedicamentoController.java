@@ -1,5 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.medicamento.application.api;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -21,5 +23,12 @@ public class MedicamentoController implements MedicamentoApi {
 		MedicamentoResponse medicamentoCriado = medicamentoService.criaMedicamento(medicamentoRequest);
 		log.info("[finaliza] MedicamentoController - postMedicamento");
 		return medicamentoCriado;
+	}
+
+	@Override
+	public List<MedicamentoListResponse> getTodosMedicamento() {
+		log.info("[inicia] MedicamentoController - getTodosMedicamento");
+		log.info("[finaliza] MedicamentoController - getTodosMedicamento");
+		return null;
 	}
 }
