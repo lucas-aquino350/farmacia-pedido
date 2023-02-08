@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -46,5 +47,15 @@ public class Medicamento {
 		this.lote = medicamentoRequest.getLote();
 		this.dataDeValidade = medicamentoRequest.getDataDeValidade();
 		this.dataDeFabricacao = medicamentoRequest.getDataDeFabricacao();
+	}
+
+	public void altera(MedicamentoAlteracaoRequest medicamentoAlteracaoRequest) {
+		this.nomeComercial = medicamentoAlteracaoRequest.getNomeComercial();
+		this.principioAtivo = medicamentoAlteracaoRequest.getPrincipioAtivo();
+		this.laboratorio = medicamentoAlteracaoRequest.getLaboratorio();
+		this.grupo = medicamentoAlteracaoRequest.getGrupo();
+		this.lote = medicamentoAlteracaoRequest.getLote();
+		this.dataDeValidade = medicamentoAlteracaoRequest.getDataDeValidade();
+		this.dataDeFabricacao = medicamentoAlteracaoRequest.getDataDeFabricacao();
 	}
 }

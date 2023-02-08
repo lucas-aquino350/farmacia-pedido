@@ -55,7 +55,7 @@ public class MedicamentoController implements MedicamentoApi {
 	public void patchAlteraMedicamento(UUID idMedicamento, @Valid MedicamentoAlteracaoRequest medicamentoAlteracaoRequest) {
 		log.info("[start] MedicamentoController - patchAlteraMedicamento");
 		log.info("[idMedicamento] {}", idMedicamento);
-		medicamentoService.deletatMedicamentoAtravesId(idMedicamento);	
+	    medicamentoService.patchAlteraMedicamento(idMedicamento, medicamentoAlteracaoRequest);
 		log.info("[finish] MedicamentoController - patchAlteraMedicamento");
 	}
 }

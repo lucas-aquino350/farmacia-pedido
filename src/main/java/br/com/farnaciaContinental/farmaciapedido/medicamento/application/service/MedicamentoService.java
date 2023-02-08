@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoRequest;
@@ -15,4 +16,5 @@ public interface MedicamentoService {
 	List<MedicamentoListResponse> buscaTodosClientes();
 	MedicamentoDetalhadoResponse buscaClienteAtravesId(UUID idMedicamento);
 	void deletatMedicamentoAtravesId(UUID idMedicamento);
+	void patchAlteraMedicamento(UUID idMedicamento, MedicamentoAlteracaoRequest medicamentoAlteracaoRequest);
 }

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
+import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoRequest;
@@ -53,6 +54,14 @@ public class MedicamentoAplicationService implements MedicamentoService {
 		Medicamento medicamento = medicamentoRepository.buscaMedicamentoAtravesId(idMedicamento);
 		medicamentoRepository.deletaMedicamentoAtravesId(medicamento);
 		log.info("[finish] MedicamentoAplicationService - deletatMedicamentoAtravesId ");
-		
+	}
+
+	@Override
+	public void patchAlteraMedicamento(UUID idMedicamento, MedicamentoAlteracaoRequest medicamentoAlteracaoRequest) {
+		log.info("[start] MedicamentoAplicationService - patchAlteraMedicamento ");
+		Medicamento medicamento = medicamentoRepository.buscaMedicamentoAtravesId(idMedicamento);
+		medicamento.altera(medicamentoAlteracaoRequest);
+		medicamentoRepository.salva(medicamento);
+		log.info("[finish] MedicamentoAplicationService - patchAlteraMedicamento ");
 	}
 }
