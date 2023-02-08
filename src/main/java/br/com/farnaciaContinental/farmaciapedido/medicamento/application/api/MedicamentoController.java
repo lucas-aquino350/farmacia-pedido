@@ -20,26 +20,34 @@ public class MedicamentoController implements MedicamentoApi {
 
 	@Override
 	public MedicamentoResponse postMedicamento(@Valid MedicamentoRequest medicamentoRequest) {
-		log.info("[inicia] MedicamentoController - postMedicamento");
+		log.info("[start] MedicamentoController - postMedicamento");
 		MedicamentoResponse medicamentoCriado = medicamentoService.criaMedicamento(medicamentoRequest);
-		log.info("[finaliza] MedicamentoController - postMedicamento");
+		log.info("[finish] MedicamentoController - postMedicamento");
 		return medicamentoCriado;
 	}
 
 	@Override
 	public List<MedicamentoListResponse> getTodosMedicamento() {
-		log.info("[inicia] MedicamentoController - getTodosMedicamento");
+		log.info("[start] MedicamentoController - getTodosMedicamento");
 		List<MedicamentoListResponse> medicamentos = medicamentoService.buscaTodosClientes();
-		log.info("[finaliza] MedicamentoController - getTodosMedicamento");
+		log.info("[finish] MedicamentoController - getTodosMedicamento");
 		return medicamentos;
 	}
 
 	@Override
 	public MedicamentoDetalhadoResponse getMedicamentoAtravesId(UUID idMedicamento) {
-		log.info("[inicia] MedicamentoController - getMedicamentoAtravesId");
+		log.info("[start] MedicamentoController - getMedicamentoAtravesId");
 		log.info("[idMedicamento] {}", idMedicamento);
 		MedicamentoDetalhadoResponse medicamentoDetalhado = medicamentoService.buscaClienteAtravesId(idMedicamento);
 		log.info("[finish] MedicamentoController - getMedicamentoAtravesId");
 		return medicamentoDetalhado;
+	}
+
+	@Override
+	public void deletatMedicamentoAtravesId(UUID idMedicamento) {
+		log.info("[start] MedicamentoController - deletatMedicamentoAtravesId");
+		log.info("[idMedicamento] {}", idMedicamento);
+		medicamentoService.buscaClienteAtravesId(idMedicamento);
+		log.info("[finish] MedicamentoController - deletatMedicamentoAtravesId");
 	}
 }
