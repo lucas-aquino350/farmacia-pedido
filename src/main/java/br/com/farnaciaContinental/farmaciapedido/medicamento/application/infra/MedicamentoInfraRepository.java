@@ -52,6 +52,7 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 	@Override
 	public void deletaMedicamentoAtravesId(Medicamento medicamento) {
 		log.info("[start] MedicamentoInfraRepository - deletaMedicamentoAtravesId ");
+		medicamentoSpringDataJPARepository.delete(medicamento);
 		log.info("[finish] MedicamentoInfraRepository - deletaMedicamentoAtravesId ");
 	}
 }
