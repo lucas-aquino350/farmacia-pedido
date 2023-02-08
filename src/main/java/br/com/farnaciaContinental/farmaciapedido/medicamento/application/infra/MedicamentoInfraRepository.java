@@ -1,6 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.medicamento.application.infra;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -37,5 +38,14 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 		List<Medicamento> todosMedicamentos = medicamentoSpringDataJPARepository.findAll();
 		log.info("[finish] MedicamentoInfraRepository - buscaTodosMedicamentos ");
 		return todosMedicamentos;
+	}
+
+	@Override
+	public Medicamento buscaMedicamentoAtravesId(UUID idMedicamento) {
+		log.info("[start] MedicamentoInfraRepository - buscaMedicamentoAtravesId ");
+		Medicamento medicamento = medicamentoSpringDataJPARepository.findById(idMedicamento)
+				.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Medicamento não encontrado"));
+		log.info("[finish] MedicamentoInfraRepository - buscaMedicamentoAtravesId ");
+		return medicamento;
 	}
 }

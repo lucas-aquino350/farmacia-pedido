@@ -42,7 +42,8 @@ public class MedicamentoAplicationService implements MedicamentoService {
 	@Override
 	public MedicamentoDetalhadoResponse buscaClienteAtravesId(UUID idMedicamento) {
 		log.info("[start] MedicamentoAplicationService - buscaClienteAtravesId ");
+		Medicamento medicamento = medicamentoRepository.buscaMedicamentoAtravesId(idMedicamento);
 		log.info("[finish] MedicamentoAplicationService - buscaClienteAtravesId ");
-		return null;
+		return new MedicamentoDetalhadoResponse(medicamento);
 	}
 }
