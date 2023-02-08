@@ -2,11 +2,9 @@ package br.com.farnaciaContinental.farmaciapedido.medicamento.application.infra;
 
 import java.util.List;
 import java.util.UUID;
-
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-
 import br.com.farnaciaContinental.farmaciapedido.handler.APIException;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.repository.MedicamentoRepository;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.domain.Medicamento;
