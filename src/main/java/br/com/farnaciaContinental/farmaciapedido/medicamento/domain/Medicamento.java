@@ -31,6 +31,7 @@ public class Medicamento {
     private String laboratorio;
 	private Grupo grupo;
 	@NotBlank
+	@Column(unique = true)
 	private String lote;
 	@NotNull
 	private LocalDate dataDeValidade;

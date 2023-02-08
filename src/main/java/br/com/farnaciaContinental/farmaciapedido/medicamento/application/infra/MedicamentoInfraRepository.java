@@ -23,10 +23,10 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 	public Medicamento salva(Medicamento medicamento) {
 	log.info("[start] MedicamentoInfraRepository - salva ");
 	try {
-		medicamentoSpringDataJPARepository.save(medicamento);
-		} catch (DataIntegrityViolationException e) {
-			throw APIException.build(HttpStatus.BAD_REQUEST,"Existem dados duplicados");
-	    }
+	medicamentoSpringDataJPARepository.save(medicamento);
+	} catch (DataIntegrityViolationException e) {
+        throw APIException.build(HttpStatus.BAD_REQUEST,"Existem dados duplicados");
+    }
 	log.info("[finish] MedicamentoInfraRepository - salva ");
 		return medicamento;
 	}
@@ -34,7 +34,8 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 	@Override
 	public List<Medicamento> buscaTodosMedicamentos() {
 		log.info("[start] MedicamentoInfraRepository - buscaTodosMedicamentos ");
+		List<Medicamento> todosMedicamentos = medicamentoSpringDataJPARepository.findAll();
 		log.info("[finish] MedicamentoInfraRepository - buscaTodosMedicamentos ");
-		return null;
+		return todosMedicamentos;
 	}
 }
