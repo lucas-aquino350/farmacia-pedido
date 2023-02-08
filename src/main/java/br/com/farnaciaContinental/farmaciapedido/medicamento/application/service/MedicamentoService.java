@@ -14,4 +14,5 @@ public interface MedicamentoService {
 	MedicamentoResponse criaMedicamento(@Valid MedicamentoRequest medicamentoRequest);
 	List<MedicamentoListResponse> buscaTodosClientes();
 	MedicamentoDetalhadoResponse buscaClienteAtravesId(UUID idMedicamento);
+	void deletatMedicamentoAtravesId(UUID idMedicamento);
 }

@@ -9,4 +9,5 @@ public interface MedicamentoRepository {
 	Medicamento salva(Medicamento medicamento);
 	List<Medicamento> buscaTodosMedicamentos();
 	Medicamento buscaMedicamentoAtravesId(UUID idMedicamento);
+	void deletaMedicamentoAtravesId(Medicamento medicamento);
 }

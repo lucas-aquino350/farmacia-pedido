@@ -47,7 +47,7 @@ public class MedicamentoController implements MedicamentoApi {
 	public void deletatMedicamentoAtravesId(UUID idMedicamento) {
 		log.info("[start] MedicamentoController - deletatMedicamentoAtravesId");
 		log.info("[idMedicamento] {}", idMedicamento);
-		medicamentoService.buscaClienteAtravesId(idMedicamento);
+		medicamentoService.deletatMedicamentoAtravesId(idMedicamento);
 		log.info("[finish] MedicamentoController - deletatMedicamentoAtravesId");
 	}
 }

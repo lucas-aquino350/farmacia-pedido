@@ -48,4 +48,10 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 		log.info("[finish] MedicamentoInfraRepository - buscaMedicamentoAtravesId ");
 		return medicamento;
 	}
+
+	@Override
+	public void deletaMedicamentoAtravesId(Medicamento medicamento) {
+		log.info("[start] MedicamentoInfraRepository - deletaMedicamentoAtravesId ");
+		log.info("[finish] MedicamentoInfraRepository - deletaMedicamentoAtravesId ");
+	}
 }
