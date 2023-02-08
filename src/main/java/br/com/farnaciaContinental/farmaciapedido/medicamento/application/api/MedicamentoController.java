@@ -1,6 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.medicamento.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -31,5 +32,14 @@ public class MedicamentoController implements MedicamentoApi {
 		List<MedicamentoListResponse> medicamentos = medicamentoService.buscaTodosClientes();
 		log.info("[finaliza] MedicamentoController - getTodosMedicamento");
 		return medicamentos;
+	}
+
+	@Override
+	public MedicamentoDetalhadoResponse getMedicamentoAtravesId(UUID idMedicamento) {
+		log.info("[inicia] MedicamentoController - getMedicamentoAtravesId");
+		log.info("[idMedicamento] {}", idMedicamento);
+		MedicamentoDetalhadoResponse medicamentoDetalhado = medicamentoService.buscaClienteAtravesId(idMedicamento);
+		log.info("[finish] MedicamentoController - getMedicamentoAtravesId");
+		return medicamentoDetalhado;
 	}
 }

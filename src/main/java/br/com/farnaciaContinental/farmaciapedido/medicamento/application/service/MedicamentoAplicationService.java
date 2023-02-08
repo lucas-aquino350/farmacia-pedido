@@ -1,11 +1,13 @@
 package br.com.farnaciaContinental.farmaciapedido.medicamento.application.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
+import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoRequest;
 import br.com.farnaciaContinental.farmaciapedido.medicamento.application.api.MedicamentoResponse;
@@ -35,5 +37,12 @@ public class MedicamentoAplicationService implements MedicamentoService {
 		List<Medicamento> medicamentos = medicamentoRepository.buscaTodosMedicamentos();
 		log.info("[finish] MedicamentoAplicationService - buscaTodosClientes ");
 		return MedicamentoListResponse.converte(medicamentos);
+	}
+
+	@Override
+	public MedicamentoDetalhadoResponse buscaClienteAtravesId(UUID idMedicamento) {
+		log.info("[start] MedicamentoAplicationService - buscaClienteAtravesId ");
+		log.info("[finish] MedicamentoAplicationService - buscaClienteAtravesId ");
+		return null;
 	}
 }
