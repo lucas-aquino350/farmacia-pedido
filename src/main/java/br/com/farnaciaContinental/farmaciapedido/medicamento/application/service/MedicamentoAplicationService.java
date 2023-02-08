@@ -32,7 +32,8 @@ public class MedicamentoAplicationService implements MedicamentoService {
 	@Override
 	public List<MedicamentoListResponse> buscaTodosClientes() {
 		log.info("[start] MedicamentoAplicationService - buscaTodosClientes ");
+		List<Medicamento> medicamentos = medicamentoRepository.buscaTodosMedicamentos();
 		log.info("[finish] MedicamentoAplicationService - buscaTodosClientes ");
-		return null;
+		return MedicamentoListResponse.converte(medicamentos);
 	}
 }

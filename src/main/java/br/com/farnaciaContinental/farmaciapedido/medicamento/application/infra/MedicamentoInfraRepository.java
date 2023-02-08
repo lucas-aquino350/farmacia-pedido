@@ -1,5 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.medicamento.application.infra;
 
+import java.util.List;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
@@ -27,5 +29,12 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 	    }
 	log.info("[finish] MedicamentoInfraRepository - salva ");
 		return medicamento;
+	}
+
+	@Override
+	public List<Medicamento> buscaTodosMedicamentos() {
+		log.info("[start] MedicamentoInfraRepository - buscaTodosMedicamentos ");
+		log.info("[finish] MedicamentoInfraRepository - buscaTodosMedicamentos ");
+		return null;
 	}
 }
