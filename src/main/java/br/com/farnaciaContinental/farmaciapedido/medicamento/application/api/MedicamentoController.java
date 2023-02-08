@@ -28,7 +28,8 @@ public class MedicamentoController implements MedicamentoApi {
 	@Override
 	public List<MedicamentoListResponse> getTodosMedicamento() {
 		log.info("[inicia] MedicamentoController - getTodosMedicamento");
+		List<MedicamentoListResponse> medicamentos = medicamentoService.buscaTodosClientes();
 		log.info("[finaliza] MedicamentoController - getTodosMedicamento");
-		return null;
+		return medicamentos;
 	}
 }
