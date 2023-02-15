@@ -18,13 +18,13 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RequiredArgsConstructor
 public class ClienteInfraRepository implements ClienteRepository {
-	private final ClienteSpringDataJPARepository clienteSpringDataJPARepository;
+	private final ClienteMongoSpringRepository clienteMongoSpringRepository;
 
 	@Override
 	public Cliente salva(Cliente cliente) {
 		log.info("[start] ClienteInfraRepository - salva");
 		try {
-		clienteSpringDataJPARepository.save(cliente);
+		clienteMongoSpringRepository.save(cliente);
 		} catch (DataIntegrityViolationException e) {
 			throw APIException.build(HttpStatus.BAD_REQUEST,"Existem dados duplicados");
 	    }
@@ -35,7 +35,7 @@ public class ClienteInfraRepository implements ClienteRepository {
 	@Override
 	public List<Cliente> buscaTodosClientes() {
 		log.info("[start] ClienteInfraRepository - buscaTodosClientes");
-		List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
+		List<Cliente> todosClientes = clienteMongoSpringRepository.findAll();
 		log.info("[finish] ClienteInfraRepository - buscaTodosClientes");
 		return todosClientes;
 	}
@@ -43,7 +43,7 @@ public class ClienteInfraRepository implements ClienteRepository {
 	@Override
 	public Cliente buscaClienteAtravesId(UUID idCliente) {
 		log.info("[start] ClienteInfraRepository - buscaClienteAtravesId");
-		Cliente cliente = clienteSpringDataJPARepository.findById(idCliente)
+		Cliente cliente = clienteMongoSpringRepository.findById(idCliente)
 				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Cliente não Encontrado"));
 		log.info("[finish] ClienteInfraRepository - buscaClienteAtravesId");
 		return cliente;
@@ -52,7 +52,7 @@ public class ClienteInfraRepository implements ClienteRepository {
 	@Override
 	public void deletaClienteAtravesId(Cliente cliente) {
 		log.info("[start] ClienteInfraRepository - deletaClienteAtravesId");
-		clienteSpringDataJPARepository.delete(cliente);
+		clienteMongoSpringRepository.delete(cliente);
 		log.info("[start] ClienteInfraRepository - deletaClienteAtravesId");
 	}
 

@@ -3,39 +3,31 @@ package br.com.farnaciaContinental.farmaciapedido.cliente.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.br.CPF;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-@Entity
+@Document(collection = "Cliente")
 public class Cliente {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "uuid", name="idCliente",updatable=false,unique=true,nullable=false)
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompleto;
 	@NotBlank
-	@Column(unique = true)
 	@CPF
 	private String cpf;
-	@Email
-	@Column(unique = true)
+	@Email	
 	@NotBlank
 	private String email;
 	@NotBlank
@@ -47,6 +39,7 @@ public class Cliente {
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
 	public Cliente( ClienteRequest clienteRequest) {
+		this.idCliente = UUID.randomUUID();
 		this.nomeCompleto = clienteRequest.getNomeCompleto();
 		this.cpf = clienteRequest.getCpf();
 		this.email = clienteRequest.getEmail();

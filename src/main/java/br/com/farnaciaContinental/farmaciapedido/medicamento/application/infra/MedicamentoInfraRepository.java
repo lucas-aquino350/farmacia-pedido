@@ -16,13 +16,13 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class MedicamentoInfraRepository implements MedicamentoRepository {
 
-	private final MedicamentoSpringJPARepository medicamentoSpringDataJPARepository;
+	private final MedicamentoMongoSpringRepository medicamentoMongoSpringRepository;
 
 	@Override
 	public Medicamento salva(Medicamento medicamento) {
 	log.info("[start] MedicamentoInfraRepository - salva ");
 	try {
-	medicamentoSpringDataJPARepository.save(medicamento);
+	medicamentoMongoSpringRepository.save(medicamento);
 	} catch (DataIntegrityViolationException e) {
         throw APIException.build(HttpStatus.BAD_REQUEST,"Existem dados duplicados");
     }
@@ -33,7 +33,7 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 	@Override
 	public List<Medicamento> buscaTodosMedicamentos() {
 		log.info("[start] MedicamentoInfraRepository - buscaTodosMedicamentos ");
-		List<Medicamento> todosMedicamentos = medicamentoSpringDataJPARepository.findAll();
+		List<Medicamento> todosMedicamentos = medicamentoMongoSpringRepository.findAll();
 		log.info("[finish] MedicamentoInfraRepository - buscaTodosMedicamentos ");
 		return todosMedicamentos;
 	}
@@ -41,7 +41,7 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 	@Override
 	public Medicamento buscaMedicamentoAtravesId(UUID idMedicamento) {
 		log.info("[start] MedicamentoInfraRepository - buscaMedicamentoAtravesId ");
-		Medicamento medicamento = medicamentoSpringDataJPARepository.findById(idMedicamento)
+		Medicamento medicamento = medicamentoMongoSpringRepository.findById(idMedicamento)
 				.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Medicamento não encontrado"));
 		log.info("[finish] MedicamentoInfraRepository - buscaMedicamentoAtravesId ");
 		return medicamento;
@@ -50,7 +50,7 @@ public class MedicamentoInfraRepository implements MedicamentoRepository {
 	@Override
 	public void deletaMedicamentoAtravesId(Medicamento medicamento) {
 		log.info("[start] MedicamentoInfraRepository - deletaMedicamentoAtravesId ");
-		medicamentoSpringDataJPARepository.delete(medicamento);
+		medicamentoMongoSpringRepository.delete(medicamento);
 		log.info("[finish] MedicamentoInfraRepository - deletaMedicamentoAtravesId ");
 	}
 }
