@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,16 +33,15 @@ public class Endereco {
 	@NotBlank
 	private String cidade;
 	
-	public Endereco(UUID idEndreco, UUID idCliente, Tipo tipoEndreco, @NotBlank String rua,
-			@NotBlank String numeroDaCasa, String complemento, @NotBlank String bairro, @NotBlank String cidade) {
+	public Endereco(EnderecoRequest enderecoRequest) {
 		this.idEndereco = UUID.randomUUID();
-		this.idCliente = idCliente;
-		this.tipoEndereco = tipoEndreco;
-		this.rua = rua;
-		this.numeroDaCasa = numeroDaCasa;
-		this.complemento = complemento;
-		this.bairro = bairro;
-		this.cidade = cidade;
+		this.idCliente = enderecoRequest.getIdCliente();
+		this.tipoEndereco = enderecoRequest.getTipoEndereco();
+		this.rua = enderecoRequest.getRua();
+		this.numeroDaCasa = enderecoRequest.getNumeroDaCasa();
+		this.complemento = enderecoRequest.getComplemento();
+		this.bairro = enderecoRequest.getBairro();
+		this.cidade = enderecoRequest.getCidade();
 	}
 	
 }
