@@ -16,7 +16,7 @@ public class EnderecoController implements EnderecoApi {
 	@Override
 	public EnderecoResponse postEndreco( EnderecoRequest enderecoRequest) {
 	log.info("[start] EnderecoController - postEndreco");
-	EnderecoResponse enderecoCriado = enderecoService.criaEndreco(enderecoRequest);
+	EnderecoResponse enderecoCriado = enderecoService.criaEndereco(enderecoRequest);
 	log.info("[finish] EnderecoController - postEndreco");
 		return enderecoCriado;
 	}

@@ -5,6 +5,6 @@ import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.Endere
 
 public interface EnderecoService {
 
-	EnderecoResponse criaEndreco(EnderecoRequest enderecoRequest);
+	EnderecoResponse criaEndereco(EnderecoRequest enderecoRequest);
 
 }

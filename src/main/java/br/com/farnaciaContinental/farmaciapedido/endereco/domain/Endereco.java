@@ -18,10 +18,10 @@ import lombok.NoArgsConstructor;
 public class Endereco {
 
 	@Id
-	private UUID idEndreco;
+	private UUID idEndereco;
 	@Indexed
 	private UUID idCliente;
-	private Tipo tipoEndreco;
+	private Tipo tipoEndereco;
 	@NotBlank
 	private String rua;
 	@NotBlank
@@ -34,9 +34,9 @@ public class Endereco {
 	
 	public Endereco(UUID idEndreco, UUID idCliente, Tipo tipoEndreco, @NotBlank String rua,
 			@NotBlank String numeroDaCasa, String complemento, @NotBlank String bairro, @NotBlank String cidade) {
-		this.idEndreco = UUID.randomUUID();
+		this.idEndereco = UUID.randomUUID();
 		this.idCliente = idCliente;
-		this.tipoEndreco = tipoEndreco;
+		this.tipoEndereco = tipoEndreco;
 		this.rua = rua;
 		this.numeroDaCasa = numeroDaCasa;
 		this.complemento = complemento;
