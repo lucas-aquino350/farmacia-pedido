@@ -1,5 +1,8 @@
 package br.com.farnaciaContinental.farmaciapedido.endereco.application.api;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.service.EnderecoService;
@@ -19,5 +22,12 @@ public class EnderecoController implements EnderecoApi {
 	EnderecoResponse enderecoCriado = enderecoService.criaEndereco(enderecoRequest);
 	log.info("[finish] EnderecoController - postEndreco");
 		return enderecoCriado;
+	}
+
+	@Override
+	public List<EnderecoListResponse> getTodosEndrecoCliente(UUID idCliente) {
+		log.info("[start] EnderecoController - getTodosEndrecoCliente");
+		log.info("[finish] EnderecoController - getTodosEndrecoCliente");
+		return null;
 	}
 }
