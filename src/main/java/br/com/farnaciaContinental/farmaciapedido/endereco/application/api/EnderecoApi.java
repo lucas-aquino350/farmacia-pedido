@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("v1/endereco")
+@RequestMapping("v1/{idCliente}/endereco")
 public interface EnderecoApi {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	EnderecoResponse postEndreco(@Valid @RequestBody EnderecoRequest EnderecoRequest);
+	EnderecoResponse postEndreco(@PathVariable UUID idCliente, @Valid @RequestBody EnderecoRequest EnderecoRequest);
 	
-	@GetMapping(value = "/{idCliente}")
+	@GetMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	List<EnderecoListResponse> getTodosEndrecoCliente(@PathVariable UUID idCliente);
 }

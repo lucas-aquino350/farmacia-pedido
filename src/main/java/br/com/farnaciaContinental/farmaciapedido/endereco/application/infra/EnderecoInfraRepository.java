@@ -1,5 +1,8 @@
 package br.com.farnaciaContinental.farmaciapedido.endereco.application.infra;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.repository.EnderecoRepository;
@@ -20,5 +23,13 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 		enderecoSpringMongoRepository.save(endereco);
 		log.info("[finish] EnderecoInfraRepository - salva");
 		return endereco;
+	}
+
+	@Override
+	public List<Endereco> buscaEnderecosDoClienteComId(UUID idCliente) {
+		log.info("[start] EnderecoInfraRepository - salva");
+		var enderecos = enderecoSpringMongoRepository.findByIdCliente(idCliente);
+		log.info("[finish] EnderecoInfraRepository - salva");
+		return enderecos;
 	}
 }

@@ -3,6 +3,7 @@ package br.com.farnaciaContinental.farmaciapedido.endereco.domain;
 import java.util.UUID;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -21,6 +22,7 @@ public class Endereco {
 	@Id
 	private UUID idEndereco;
 	@Indexed
+	@NotNull
 	private UUID idCliente;
 	private Tipo tipoEndereco;
 	@NotBlank
