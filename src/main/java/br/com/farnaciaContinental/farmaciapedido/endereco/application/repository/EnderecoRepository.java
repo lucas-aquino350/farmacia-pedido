@@ -11,4 +11,6 @@ public interface EnderecoRepository {
 
 	List<Endereco> buscaEnderecosDoClienteComId(UUID idCliente);
 
+	Endereco buscaEndereco(UUID idEndereco);
+
 }

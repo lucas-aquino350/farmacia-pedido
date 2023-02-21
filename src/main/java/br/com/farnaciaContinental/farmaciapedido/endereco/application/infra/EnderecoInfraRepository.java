@@ -3,10 +3,12 @@ package br.com.farnaciaContinental.farmaciapedido.endereco.application.infra;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.repository.EnderecoRepository;
 import br.com.farnaciaContinental.farmaciapedido.endereco.domain.Endereco;
+import br.com.farnaciaContinental.farmaciapedido.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -31,5 +33,14 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 		var enderecos = enderecoSpringMongoRepository.findByIdCliente(idCliente);
 		log.info("[finish] EnderecoInfraRepository - salva");
 		return enderecos;
+	}
+
+	@Override
+	public Endereco buscaEndereco(UUID idEndereco) {
+		log.info("[start] EnderecoInfraRepository - buscaEndereco");
+		var endereco = enderecoSpringMongoRepository.findById(idEndereco)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"Endereco não encontrado para o IdEndereco" + idEndereco));
+		log.info("[finish] EnderecoInfraRepository - buscaEndereco");
+		return endereco;
 	}
 }
