@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.service.ClienteService;
+import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoRequest;
@@ -57,5 +58,15 @@ public class EnderecoApplicationService implements EnderecoService {
 	    Endereco endereco = enderecoRepository.buscaEndereco(idEndereco);
 		enderecoRepository.deletaEndereco(endereco);
 		log.info("[finish] EnderecoApplicationService - deletaEnderecoAtravesId");
+	}
+
+	@Override
+	public void alteraEnderecoAtravesId(UUID idCliente, UUID idEndereco, EnderecoAlteracaoRequest enderecoAlteracaoRequest) {
+		log.info("[start] EnderecoApplicationService - alteraEnderecoAtravesId");
+		clienteService.buscaClienteAtravesId(idCliente);
+		Endereco endereco = enderecoRepository.buscaEndereco(idEndereco);
+		endereco.altera(enderecoAlteracaoRequest);
+		enderecoRepository.salva(endereco);
+		log.info("[finish] EnderecoApplicationService - alteraEnderecoAtravesId");
 	}
 }

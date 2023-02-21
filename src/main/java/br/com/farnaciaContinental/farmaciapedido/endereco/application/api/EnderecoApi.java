@@ -39,5 +39,5 @@ public interface EnderecoApi {
 	@PatchMapping("/{idEndereco}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void patchAlteraEndereco(@PathVariable UUID idCliente,@PathVariable UUID idEndereco,
-			@Valid @RequestBody EnderecoAlteracaoRequest EnderecoAlteracaoRequest);
+			@Valid @RequestBody EnderecoAlteracaoRequest enderecoAlteracaoRequest);
 }

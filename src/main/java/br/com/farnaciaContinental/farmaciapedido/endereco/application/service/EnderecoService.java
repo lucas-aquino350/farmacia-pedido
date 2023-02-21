@@ -3,6 +3,7 @@ package br.com.farnaciaContinental.farmaciapedido.endereco.application.service;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoRequest;
@@ -14,4 +15,5 @@ public interface EnderecoService {
 	List<EnderecoListResponse> buscaEnderecosDoClienteComId(UUID idCliente);
 	EnderecoDetalhadoResponse buscaEnderecoComId(UUID idCliente, UUID idEndereco);
 	void deletaEnderecoAtravesId(UUID idCliente, UUID idEndereco);
+	void alteraEnderecoAtravesId(UUID idCliente, UUID idEndereco, EnderecoAlteracaoRequest enderecoAlteracaoRequest);
 }

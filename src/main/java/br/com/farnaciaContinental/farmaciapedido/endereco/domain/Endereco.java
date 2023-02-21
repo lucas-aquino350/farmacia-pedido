@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.endereco.application.api.EnderecoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -45,5 +46,13 @@ public class Endereco {
 		this.bairro = enderecoRequest.getBairro();
 		this.cidade = enderecoRequest.getCidade();
 	}
-	
+
+	public void altera(EnderecoAlteracaoRequest enderecoAlteracaoRequest) {
+		this.tipoEndereco = enderecoAlteracaoRequest.getTipoEndereco();
+		this.rua = enderecoAlteracaoRequest.getRua();
+		this.numeroDaCasa = enderecoAlteracaoRequest.getNumeroDaCasa();
+		this.complemento = enderecoAlteracaoRequest.getComplemento();
+		this.bairro = enderecoAlteracaoRequest.getBairro();
+		this.cidade = enderecoAlteracaoRequest.getCidade();
+	}
 }

@@ -53,9 +53,10 @@ public class EnderecoController implements EnderecoApi {
 
 	@Override
 	public void patchAlteraEndereco(UUID idCliente, UUID idEndereco,
-			 EnderecoAlteracaoRequest EnderecoAlteracaoRequest) {
+			 EnderecoAlteracaoRequest enderecoAlteracaoRequest) {
 		log.info("[start] EnderecoController - patchAlteraEndereco");
 		log.info("[idCliente] {} - [idEndereco] {}", idCliente, idEndereco);
+		enderecoService.alteraEnderecoAtravesId(idCliente, idEndereco, enderecoAlteracaoRequest );
 		log.info("[finish] EnderecoController - patchAlteraEndereco");
 	}
 }
