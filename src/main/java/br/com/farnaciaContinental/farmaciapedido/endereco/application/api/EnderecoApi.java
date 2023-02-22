@@ -25,11 +25,11 @@ public interface EnderecoApi {
 	EnderecoResponse postEndreco(@PathVariable UUID idCliente, @Valid @RequestBody EnderecoRequest EnderecoRequest);
 	
 	@GetMapping
-	@ResponseStatus(code = HttpStatus.CREATED)
+	@ResponseStatus(code = HttpStatus.OK)
 	List<EnderecoListResponse> getTodosEndrecoCliente(@PathVariable UUID idCliente);
 	
 	@GetMapping("/{idEndereco}")
-	@ResponseStatus(code = HttpStatus.CREATED)
+	@ResponseStatus(code = HttpStatus.OK)
 	EnderecoDetalhadoResponse getEnderecoComId(@PathVariable UUID idCliente, @PathVariable UUID idEndereco);
 	
 	@DeleteMapping("/{idEndereco}")

@@ -1,10 +1,12 @@
 package br.com.farnaciaContinental.farmaciapedido.itemPedido.application.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.service.ClienteService;
+import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoRequest;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.repository.ItemPedidoRepository;
@@ -27,5 +29,13 @@ public class ItemPedidoApplicationService implements ItemPedidoService {
 		ItemDoPedido  item = itemPedidoRepository.salva(new ItemDoPedido(itemPedidoRequest));
 		log.info("[finish] ItemPedidoApplicationService - criaItem");
 		return ItemPedidoResponse.builder().idItemPedido(item.getIdItemPedido()).build();
+	}
+
+	@Override
+	public List<ItemPedidoDetalhadoResponse> buscaTodosItemPedido(UUID idCliente) {
+		log.info("[start] ItemPedidoApplicationService - buscaTodosItemPedid");
+		clienteService.buscaClienteAtravesId(idCliente);
+		log.info("[finish] ItemPedidoApplicationService - buscaTodosItemPedid");
+		return null;
 	}
 }
