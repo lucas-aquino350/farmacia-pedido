@@ -9,16 +9,18 @@ import lombok.Value;
 
 @Value
 public class ItemPedidoListResponse {
-
+	
+	private UUID idItemPedido;
 	private UUID idMedicamento;
 	private Integer quantidade;
-	
+
+	public static List<ItemPedidoListResponse> converte(List<ItemDoPedido> itensDoPedido) {
+		return itensDoPedido.stream().map(ItemPedidoListResponse::new).collect(Collectors.toList());
+	}
+
 	public ItemPedidoListResponse(ItemDoPedido itemDoPedido) {
+		this.idItemPedido = itemDoPedido.getIdItemPedido();
 		this.idMedicamento = itemDoPedido.getIdMedicamento();
 		this.quantidade = itemDoPedido.getQuantidade();
 	}
-	
-	public static List<ItemPedidoListResponse> converte(List<ItemDoPedido> itens) {
-		return itens.stream().map(ItemPedidoListResponse::new).collect(Collectors.toList());
-	}	
 }

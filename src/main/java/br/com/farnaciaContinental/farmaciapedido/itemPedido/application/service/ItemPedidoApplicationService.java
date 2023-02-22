@@ -26,17 +26,17 @@ public class ItemPedidoApplicationService implements ItemPedidoService {
 	public ItemPedidoResponse criaItem(UUID idCliente, ItemPedidoRequest itemPedidoRequest) {
 		log.info("[start] ItemPedidoApplicationService - criaItem");
 		clienteService.buscaClienteAtravesId(idCliente);
-		ItemDoPedido  item = itemPedidoRepository.salva(new ItemDoPedido(itemPedidoRequest));
+		ItemDoPedido  item = itemPedidoRepository.salva(new ItemDoPedido(idCliente,itemPedidoRequest));
 		log.info("[finish] ItemPedidoApplicationService - criaItem");
 		return ItemPedidoResponse.builder().idItemPedido(item.getIdItemPedido()).build();
 	}
 
 	@Override
-	public List<ItemPedidoListResponse> buscaTodosItemPedido(UUID idCliente) {
-		log.info("[start] ItemPedidoApplicationService - buscaTodosItemPedid");
+	public List<ItemPedidoListResponse> buscaItensPedidoClienteComId(UUID idCliente) {
+		log.info("[start] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
 		clienteService.buscaClienteAtravesId(idCliente);
-		List<ItemDoPedido> itens = itemPedidoRepository.buscaTodosItens();
-		log.info("[finish] ItemPedidoApplicationService - buscaTodosItemPedid");
-		return ItemPedidoListResponse.converte(itens);
+		List<ItemDoPedido> itensDoPedido = itemPedidoRepository.buscaItensPedidoClienteComId(idCliente);
+		log.info("[finish] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
+		return ItemPedidoListResponse.converte(itensDoPedido);
 	}
 }

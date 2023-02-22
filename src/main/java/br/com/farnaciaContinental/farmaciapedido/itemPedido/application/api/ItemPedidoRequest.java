@@ -8,6 +8,9 @@ import lombok.Value;
 
 @Value
 public class ItemPedidoRequest {
+	
+	@NotNull
+	private UUID idCliente;
 	@NotNull
 	private UUID idMedicamento;
 	@NotNull

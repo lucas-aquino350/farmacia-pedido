@@ -1,6 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.itemPedido.application.infra;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
@@ -25,10 +26,11 @@ public class ItemPedidoInfraRepository implements ItemPedidoRepository {
 	}
 
 	@Override
-	public List<ItemDoPedido> buscaTodosItens() {
-		log.info("[start]  ItemPedidoInfraRepository - buscaTodosItens");
-		List<ItemDoPedido> todosItens = itemPedidoSpringMongoRepository.findAll();
-		log.info("[finish]  ItemPedidoInfraRepository - buscaTodosItens");
-		return todosItens;
+	public List<ItemDoPedido> buscaItensPedidoClienteComId(UUID idCliente) {
+		log.info("[start]  ItemPedidoInfraRepository - buscaItensPedidoClienteComId");
+		var itens = itemPedidoSpringMongoRepository.findByIdCliente(idCliente);
+		log.info("[finish]  ItemPedidoInfraRepository - buscaItensPedidoClienteComId");
+		return itens;
 	}
+
 }

@@ -11,6 +11,6 @@ public interface ItemPedidoService {
 
 	ItemPedidoResponse criaItem(UUID idCliente, ItemPedidoRequest itemPedidoRequest);
 
-	List<ItemPedidoListResponse> buscaTodosItemPedido(UUID idCliente);
-
+	List<ItemPedidoListResponse> buscaItensPedidoClienteComId(UUID idCliente);
+	
 }

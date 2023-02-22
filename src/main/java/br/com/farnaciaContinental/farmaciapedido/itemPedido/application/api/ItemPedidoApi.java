@@ -6,7 +6,6 @@ import java.util.UUID;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,10 +24,6 @@ public interface ItemPedidoApi {
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<ItemPedidoListResponse> getTodosItemPedido(@PathVariable UUID idCliente);
-	
-	@DeleteMapping("/{idItemPedido}")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void deletaItemPedidoAtravesId(@PathVariable UUID idCliente, @PathVariable UUID idItemPedido);
+	List<ItemPedidoListResponse> getTodosItemPedidoCliente(@PathVariable UUID idCliente);
 	
 }
