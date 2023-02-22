@@ -7,6 +7,6 @@ import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.Item
 
 public interface ItemPedidoService {
 
-	ItemPedidoResponse criaItem(UUID idCliente,UUID idMedicamento, ItemPedidoRequest itemPedidoRequest);
+	ItemPedidoResponse criaItem(UUID idCliente, ItemPedidoRequest itemPedidoRequest);
 
 }

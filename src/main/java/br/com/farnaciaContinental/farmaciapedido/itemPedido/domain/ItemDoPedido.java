@@ -27,7 +27,6 @@ public class ItemDoPedido {
 	@NotNull
 	private Integer quantidade;
 	
-	
 	public ItemDoPedido(ItemPedidoRequest itemPedidoRequest) {
 		this.idItemPedido = UUID.randomUUID();
 		this.idMedicamento = itemPedidoRequest.getIdMedicamento();

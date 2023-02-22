@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.farnaciaContinental.farmaciapedido.cliente.application.service.ClienteService;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoRequest;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.repository.ItemPedidoRepository;
@@ -17,10 +18,12 @@ import lombok.extern.log4j.Log4j2;
 public class ItemPedidoApplicationService implements ItemPedidoService {
 
 	private final ItemPedidoRepository itemPedidoRepository;
+	private final ClienteService clienteService;
 
 	@Override
-	public ItemPedidoResponse criaItem(UUID idCliente,UUID idMedicamento, ItemPedidoRequest itemPedidoRequest) {
+	public ItemPedidoResponse criaItem(UUID idCliente, ItemPedidoRequest itemPedidoRequest) {
 		log.info("[start] ItemPedidoApplicationService - criaItem");
+		clienteService.buscaClienteAtravesId(idCliente);
 		ItemDoPedido  item = itemPedidoRepository.salva(new ItemDoPedido(itemPedidoRequest));
 		log.info("[finish] ItemPedidoApplicationService - criaItem");
 		return ItemPedidoResponse.builder().idItemPedido(item.getIdItemPedido()).build();

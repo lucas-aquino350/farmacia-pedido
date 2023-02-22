@@ -17,10 +17,10 @@ public class ItemPedidoController implements ItemPedidoApi {
 	private final ItemPedidoService itemPedidoService;
 
 	@Override
-	public ItemPedidoResponse postItemPedido( UUID idCliente,UUID idMedicamento, ItemPedidoRequest itemPedidoRequest) {
+	public ItemPedidoResponse postItemPedido( UUID idCliente, ItemPedidoRequest itemPedidoRequest) {
 	log.info("[start] ItemPedidoController - postItemPedido");
-	log.info("[idCliente] {} - [idMedicamento] {}", idCliente, idMedicamento);
-	ItemPedidoResponse itemCriado = itemPedidoService.criaItem(idCliente,idMedicamento, itemPedidoRequest);
+	log.info("[idCliente] {}", idCliente);
+	ItemPedidoResponse itemCriado = itemPedidoService.criaItem(idCliente, itemPedidoRequest);
 	log.info("[finish] ItemPedidoController - postItemPedido");
 		return itemCriado;
 	}

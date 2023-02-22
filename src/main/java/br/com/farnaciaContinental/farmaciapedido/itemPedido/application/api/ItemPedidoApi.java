@@ -18,5 +18,5 @@ public interface ItemPedidoApi {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	ItemPedidoResponse postItemPedido(@PathVariable UUID idCliente,@PathVariable UUID idMedicamento, @Valid @RequestBody ItemPedidoRequest itemPedidoRequest);
+	ItemPedidoResponse postItemPedido(@PathVariable UUID idCliente, @Valid @RequestBody ItemPedidoRequest itemPedidoRequest);
 }

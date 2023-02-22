@@ -4,12 +4,21 @@ import org.springframework.stereotype.Repository;
 
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.repository.ItemPedidoRepository;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.domain.ItemDoPedido;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @Repository
+@Log4j2
+@RequiredArgsConstructor
 public class ItemPedidoInfraRepository implements ItemPedidoRepository {
+
+	private final ItemPedidoSpringMongoRepository itemPedidoSpringMongoRepository;
 
 	@Override
 	public ItemDoPedido salva(ItemDoPedido itemDoPedido) {
-		return null;
+		log.info("[start]  ItemPedidoInfraRepository - salva");
+		itemPedidoSpringMongoRepository.save(itemDoPedido);
+		log.info("[finish]  ItemPedidoInfraRepository - salva");
+		return itemDoPedido;
 	}
 }
