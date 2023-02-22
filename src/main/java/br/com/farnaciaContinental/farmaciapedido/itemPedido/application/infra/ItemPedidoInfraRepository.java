@@ -1,5 +1,7 @@
 package br.com.farnaciaContinental.farmaciapedido.itemPedido.application.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.repository.ItemPedidoRepository;
@@ -20,5 +22,12 @@ public class ItemPedidoInfraRepository implements ItemPedidoRepository {
 		itemPedidoSpringMongoRepository.save(itemDoPedido);
 		log.info("[finish]  ItemPedidoInfraRepository - salva");
 		return itemDoPedido;
+	}
+
+	@Override
+	public List<ItemDoPedido> buscaTodosItens() {
+		log.info("[start]  ItemPedidoInfraRepository - buscaTodosItens");
+		log.info("[finish]  ItemPedidoInfraRepository - buscaTodosItens");
+		return null;
 	}
 }

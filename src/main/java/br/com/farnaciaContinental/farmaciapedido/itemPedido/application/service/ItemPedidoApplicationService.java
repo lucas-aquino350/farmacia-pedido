@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.service.ClienteService;
-import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoDetalhadoResponse;
+import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoRequest;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.repository.ItemPedidoRepository;
@@ -32,10 +32,11 @@ public class ItemPedidoApplicationService implements ItemPedidoService {
 	}
 
 	@Override
-	public List<ItemPedidoDetalhadoResponse> buscaTodosItemPedido(UUID idCliente) {
+	public List<ItemPedidoListResponse> buscaTodosItemPedido(UUID idCliente) {
 		log.info("[start] ItemPedidoApplicationService - buscaTodosItemPedid");
 		clienteService.buscaClienteAtravesId(idCliente);
+		List<ItemDoPedido> itens = itemPedidoRepository.buscaTodosItens();
 		log.info("[finish] ItemPedidoApplicationService - buscaTodosItemPedid");
-		return null;
+		return ItemPedidoListResponse.converte(itens);
 	}
 }

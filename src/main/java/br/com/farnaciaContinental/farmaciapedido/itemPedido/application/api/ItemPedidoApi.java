@@ -24,7 +24,7 @@ public interface ItemPedidoApi {
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<ItemPedidoDetalhadoResponse> getTodosItemPedido(@PathVariable UUID idCliente);
+	List<ItemPedidoListResponse> getTodosItemPedido(@PathVariable UUID idCliente);
 	
 	
 }

@@ -27,10 +27,11 @@ public class ItemPedidoController implements ItemPedidoApi {
 	}
 
 	@Override
-	public List<ItemPedidoDetalhadoResponse> getTodosItemPedido(UUID idCliente) {
+	public List<ItemPedidoListResponse> getTodosItemPedido(UUID idCliente) {
 		log.info("[start] ItemPedidoController - getTodosItemPedido");
 		log.info("[idCliente] {}", idCliente);
+		List<ItemPedidoListResponse> itensPedido = itemPedidoService.buscaTodosItemPedido(idCliente);
 		log.info("[finish] ItemPedidoController - getTodosItemPedido");
-		return null;
+		return itensPedido;
 	}
 }
