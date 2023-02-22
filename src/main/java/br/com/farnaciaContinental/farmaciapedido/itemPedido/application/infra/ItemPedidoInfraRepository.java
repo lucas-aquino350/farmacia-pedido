@@ -27,7 +27,8 @@ public class ItemPedidoInfraRepository implements ItemPedidoRepository {
 	@Override
 	public List<ItemDoPedido> buscaTodosItens() {
 		log.info("[start]  ItemPedidoInfraRepository - buscaTodosItens");
+		List<ItemDoPedido> todosItens = itemPedidoSpringMongoRepository.findAll();
 		log.info("[finish]  ItemPedidoInfraRepository - buscaTodosItens");
-		return null;
+		return todosItens;
 	}
 }
