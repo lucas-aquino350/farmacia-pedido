@@ -34,4 +34,21 @@ public class ItemPedidoController implements ItemPedidoApi {
 		log.info("[finish] ItemPedidoController - getTodosItemPedidoCliente");
 		return itensPedido;
 	}
+
+	@Override
+	public ItemPedidoDetalhadoResponse getItemPedidoComId(UUID idCliente, UUID idItemPedido) {
+		log.info("[start] ItemPedidoController -  getItemPedidoComId");
+		log.info("[idCliente] {}", idCliente);
+		ItemPedidoDetalhadoResponse item = itemPedidoService.buscaItemComId(idCliente, idItemPedido);
+		log.info("[finish] ItemPedidoController -  getItemPedidoComId");
+		return item;
+	}
+
+	@Override
+	public void deletaItemPedidoAtravesId(UUID idCliente, UUID idItemPedido) {
+		log.info("[start] ItemPedidoController -  deletaItemPedidoAtravesId");
+		log.info("[idCliente] {} - [idItemPedido] {}", idCliente, idItemPedido);
+		itemPedidoService.deletaItemPedido(idCliente, idItemPedido);
+		log.info("[finish] ItemPedidoController -  deletaItemPedidoAtravesId");
+	}
 }

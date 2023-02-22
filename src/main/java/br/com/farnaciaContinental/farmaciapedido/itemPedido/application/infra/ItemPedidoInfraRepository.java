@@ -3,8 +3,10 @@ package br.com.farnaciaContinental.farmaciapedido.itemPedido.application.infra;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import br.com.farnaciaContinental.farmaciapedido.handler.APIException;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.repository.ItemPedidoRepository;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.domain.ItemDoPedido;
 import lombok.RequiredArgsConstructor;
@@ -33,4 +35,19 @@ public class ItemPedidoInfraRepository implements ItemPedidoRepository {
 		return itens;
 	}
 
+	@Override
+	public ItemDoPedido buscaItem(UUID idItemPedido) {
+		log.info("[start]  ItemPedidoInfraRepository - buscaItem");
+		var item = itemPedidoSpringMongoRepository.findById(idItemPedido)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"Item do pedido não encontrado"));
+		log.info("[finish]  ItemPedidoInfraRepository - buscaItem");
+		return item;
+	}
+
+	@Override
+	public void deleta(ItemDoPedido item) {
+		log.info("[start]  ItemPedidoInfraRepository - deleta");
+		itemPedidoSpringMongoRepository.delete(item);
+		log.info("[finish]  ItemPedidoInfraRepository - deleta");
+	}
 }

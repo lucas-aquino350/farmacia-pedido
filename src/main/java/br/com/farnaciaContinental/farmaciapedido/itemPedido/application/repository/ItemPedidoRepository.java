@@ -11,4 +11,8 @@ public interface ItemPedidoRepository {
 
 	List<ItemDoPedido> buscaItensPedidoClienteComId(UUID idCliente);
 
+	ItemDoPedido buscaItem(UUID idItemPedido);
+
+	void deleta(ItemDoPedido item);
+
 }

@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.service.ClienteService;
+import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoRequest;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoResponse;
@@ -38,5 +39,23 @@ public class ItemPedidoApplicationService implements ItemPedidoService {
 		List<ItemDoPedido> itensDoPedido = itemPedidoRepository.buscaItensPedidoClienteComId(idCliente);
 		log.info("[finish] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
 		return ItemPedidoListResponse.converte(itensDoPedido);
+	}
+
+	@Override
+	public ItemPedidoDetalhadoResponse buscaItemComId(UUID idCliente, UUID idItemPedido) {
+		log.info("[start] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
+		clienteService.buscaClienteAtravesId(idCliente);
+		ItemDoPedido item = itemPedidoRepository.buscaItem(idItemPedido);
+		log.info("[finish] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
+		return new ItemPedidoDetalhadoResponse(item);
+	}
+
+	@Override
+	public void deletaItemPedido(UUID idCliente, UUID idItemPedido) {
+		log.info("[start] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
+		clienteService.buscaClienteAtravesId(idCliente);
+		ItemDoPedido item = itemPedidoRepository.buscaItem(idItemPedido);
+		itemPedidoRepository.deleta(item);
+		log.info("[finish] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
 	}
 }
