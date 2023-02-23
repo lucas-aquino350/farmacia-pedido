@@ -57,6 +57,7 @@ public class ItemPedidoController implements ItemPedidoApi {
 			ItemDoPedidoAlteracaoRequest ItemDoPedidoAlteracaoRequest) {
 		log.info("[start] ItemPedidoController -  patchAlteraItemDoPedido");
 		log.info("[idCliente] {} - [idItemPedido] {}", idCliente, idItemPedido);
+		itemPedidoService.patchAlteraItemPedido(idCliente, idItemPedido, ItemDoPedidoAlteracaoRequest);
 		log.info("[finish] ItemPedidoController -  patchAlteraItemDoPedido");
 	}
 }

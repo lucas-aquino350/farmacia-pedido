@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemDoPedidoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -32,5 +33,10 @@ public class ItemDoPedido {
 		this.idCliente = itemPedidoRequest.getIdCliente();
 		this.idMedicamento = itemPedidoRequest.getIdMedicamento();
 		this.quantidade = itemPedidoRequest.getQuantidade();
+	}
+
+	public void altera(ItemDoPedidoAlteracaoRequest itemDoPedidoAlteracaoRequest) {
+		this.idMedicamento = itemDoPedidoAlteracaoRequest.getIdMedicamento();
+		this.quantidade = itemDoPedidoAlteracaoRequest.getQuantidade();
 	}
 }

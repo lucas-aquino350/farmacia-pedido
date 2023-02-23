@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import br.com.farnaciaContinental.farmaciapedido.cliente.application.service.ClienteService;
+import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemDoPedidoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoRequest;
@@ -57,5 +58,16 @@ public class ItemPedidoApplicationService implements ItemPedidoService {
 		ItemDoPedido item = itemPedidoRepository.buscaItem(idItemPedido);
 		itemPedidoRepository.deleta(item);
 		log.info("[finish] ItemPedidoApplicationService - buscaItensPedidoClienteComId");
+	}
+
+	@Override
+	public void patchAlteraItemPedido(UUID idCliente, UUID idItemPedido,
+			ItemDoPedidoAlteracaoRequest itemDoPedidoAlteracaoRequest) {
+		log.info("[start] ItemPedidoApplicationService - patchAlteraItemPedido");
+		clienteService.buscaClienteAtravesId(idCliente);
+		ItemDoPedido item = itemPedidoRepository.buscaItem(idItemPedido);
+		item.altera(itemDoPedidoAlteracaoRequest);
+		itemPedidoRepository.salva(item);
+		log.info("[finish] ItemPedidoApplicationService - patchAlteraItemPedido");
 	}
 }

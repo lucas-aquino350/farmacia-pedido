@@ -3,6 +3,7 @@ package br.com.farnaciaContinental.farmaciapedido.itemPedido.application.service
 import java.util.List;
 import java.util.UUID;
 
+import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemDoPedidoAlteracaoRequest;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoDetalhadoResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoListResponse;
 import br.com.farnaciaContinental.farmaciapedido.itemPedido.application.api.ItemPedidoRequest;
@@ -17,5 +18,8 @@ public interface ItemPedidoService {
 	ItemPedidoDetalhadoResponse buscaItemComId(UUID idCliente, UUID idItemPedido);
 
 	void deletaItemPedido(UUID idCliente, UUID idItemPedido);
+
+	void patchAlteraItemPedido(UUID idCliente, UUID idItemPedido,
+			ItemDoPedidoAlteracaoRequest itemDoPedidoAlteracaoRequest);
 	
 }
