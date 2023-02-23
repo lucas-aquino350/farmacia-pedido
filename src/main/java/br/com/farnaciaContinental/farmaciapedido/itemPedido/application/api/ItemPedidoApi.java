@@ -38,6 +38,6 @@ public interface ItemPedidoApi {
 	
 	@PatchMapping("/{idItemPedido}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void patchAlteraItemDoPedido(@PathVariable UUID idCliente,@PathVariable UUID idEndereco,
+	void patchAlteraItemDoPedido(@PathVariable UUID idCliente,@PathVariable UUID idItemPedido,
 			@Valid @RequestBody ItemDoPedidoAlteracaoRequest ItemDoPedidoAlteracaoRequest);
 }

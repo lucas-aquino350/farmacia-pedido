@@ -51,4 +51,12 @@ public class ItemPedidoController implements ItemPedidoApi {
 		itemPedidoService.deletaItemPedido(idCliente, idItemPedido);
 		log.info("[finish] ItemPedidoController -  deletaItemPedidoAtravesId");
 	}
+
+	@Override
+	public void patchAlteraItemDoPedido(UUID idCliente, UUID idItemPedido,
+			ItemDoPedidoAlteracaoRequest ItemDoPedidoAlteracaoRequest) {
+		log.info("[start] ItemPedidoController -  patchAlteraItemDoPedido");
+		log.info("[idCliente] {} - [idItemPedido] {}", idCliente, idItemPedido);
+		log.info("[finish] ItemPedidoController -  patchAlteraItemDoPedido");
+	}
 }
